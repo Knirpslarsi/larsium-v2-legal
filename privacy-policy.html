@@ -1,139 +1,534 @@
-# Datenschutzerklärung (Deutsch)
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung – Larsium V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-Stand: Juni 2026
+    :root {
+      --bg:        #0e0f13;
+      --surface:   #16181f;
+      --card:      #1e2029;
+      --border:    #2a2d3a;
+      --accent:    #5865f2;
+      --accent-dim:#3b44b5;
+      --text:      #e2e5f0;
+      --muted:     #7c8098;
+      --tag:       #252836;
+      --green:     #57f287;
+      --green-bg:  rgba(87,242,135,.08);
+      --green-bd:  rgba(87,242,135,.2);
+    }
 
-## 1. Verantwortlicher
+    html { scroll-behavior: smooth; }
 
-Verantwortlich für die Datenverarbeitung im Zusammenhang mit dem Discord-Bot „Larsium V2“ ist:
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-Betreiber: knirpslarsi_yt
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+    }
+    .lang-switch {
+      display: flex;
+      gap: 6px;
+    }
+    .lang-switch a {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all .15s;
+    }
+    .lang-switch a:hover,
+    .lang-switch a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-Kontakt: [support@knirpslarsi.de](mailto:support@knirpslarsi.de)
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
 
-## 2. Erhobene Daten
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 48px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: var(--green-bg);
+      border: 1px solid var(--green-bd);
+      padding: 4px 10px;
+      border-radius: 99px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-meta {
+      font-size: 14px;
+      color: var(--muted);
+    }
 
-Larsium V2 verarbeitet ausschließlich Daten, die für die Bereitstellung seiner Funktionen erforderlich sind. Dazu können gehören:
+    /* ── Language sections ── */
+    .lang-section {
+      margin-bottom: 56px;
+    }
+    .lang-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .lang-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 5px;
+      background: var(--tag);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .lang-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
-* Discord User IDs
-* Discord Server IDs
-* Discord Channel IDs
-* Discord Rollen-IDs
-* Servereinstellungen und Bot-Konfigurationen
+    /* ── Section cards ── */
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 12px;
+      transition: border-color .15s;
+    }
+    .section-card:hover { border-color: #3a3f55; }
 
-## 3. Ticketsystem
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .section-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(88,101,242,.12);
+      border: 1px solid rgba(88,101,242,.25);
+      border-radius: 6px;
+      padding: 3px 8px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
 
-Bei Nutzung des Ticketsystems können Ticket-Inhalte innerhalb des jeweiligen Discord-Servers gespeichert werden. Dies dient ausschließlich der Bearbeitung und Dokumentation von Supportanfragen.
+    .section-body p {
+      font-size: 14.5px;
+      color: #a8adc4;
+      margin-bottom: 8px;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
 
-## 4. Geburtstagsfunktion
+    /* ── Data list ── */
+    .data-list {
+      list-style: none;
+      margin: 12px 0 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .data-list li {
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--tag);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Space Grotesk', sans-serif;
+    }
 
-Nutzer können freiwillig ihr Geburtsdatum hinterlegen, um Geburtstagsbenachrichtigungen zu erhalten.
+    /* ── Notice box ── */
+    .notice {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border-left: 3px solid var(--green);
+      background: var(--green-bg);
+      font-size: 13.5px;
+      color: #9de8b8;
+    }
 
-Hierfür werden gespeichert:
+    /* ── Delete list ── */
+    .delete-list {
+      list-style: none;
+      margin: 10px 0;
+    }
+    .delete-list li {
+      font-size: 14px;
+      color: #a8adc4;
+      padding: 5px 0 5px 20px;
+      position: relative;
+    }
+    .delete-list li::before {
+      content: '×';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
 
-* Discord User ID
-* Geburtsdatum
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
 
-Die Nutzung dieser Funktion ist freiwillig und kann jederzeit beendet werden.
+    @media (max-width: 480px) {
+      .section-card { padding: 18px; }
+      .header-inner { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
 
-## 5. Autogrammkarten
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">L</div>
+      <span class="logo-name">Larsium V2</span>
+    </a>
+    <div class="lang-switch">
+      <a href="#de" class="active">DE</a>
+      <a href="#en">EN</a>
+    </div>
+  </div>
+</header>
 
-Nutzer können freiwillig ihre Postanschrift angeben, um eine Autogrammkarte zu erhalten.
+<main>
 
-Die Anschrift wird ausschließlich an den Betreiber des Bots (knirpslarsi_yt) übermittelt und nur zum Versand der angeforderten Autogrammkarte verwendet.
+  <div class="hero">
+    <div class="hero-tag">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><rect x="1" y="1" width="8" height="8" rx="2" fill="currentColor" opacity=".4"/><path d="M3 5h4M5 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Datenschutz
+    </div>
+    <h1>Datenschutzerklärung</h1>
+    <p class="hero-meta">Stand: Juni 2026 &nbsp;·&nbsp; Larsium V2</p>
+  </div>
 
-Nach Bestätigung des Erhalts wird die Anschrift gelöscht. Die Daten werden nicht öffentlich angezeigt und sind nicht über Konsolen-Ausgaben oder andere öffentliche Systeme einsehbar.
+  <!-- ── DEUTSCH ── -->
+  <div class="lang-section" id="de">
+    <div class="lang-label">
+      <span class="lang-badge">Deutsch</span>
+      <div class="lang-divider"></div>
+    </div>
 
-## 6. Weitergabe von Daten
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 1</span>
+        <span class="section-title">Verantwortlicher</span>
+      </div>
+      <div class="section-body">
+        <p>Verantwortlich für die Datenverarbeitung im Zusammenhang mit dem Discord-Bot „Larsium V2" ist:</p>
+        <p><strong style="color:var(--text)">Betreiber:</strong> knirpslarsi_yt &nbsp;·&nbsp; <a href="mailto:support@knirpslarsi.de" style="color:var(--accent);text-decoration:none;">support@knirpslarsi.de</a></p>
+      </div>
+    </div>
 
-Personenbezogene Daten werden nicht verkauft oder an unbeteiligte Dritte weitergegeben.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 2</span>
+        <span class="section-title">Erhobene Daten</span>
+      </div>
+      <div class="section-body">
+        <p>Larsium V2 verarbeitet ausschließlich Daten, die für die Bereitstellung seiner Funktionen erforderlich sind:</p>
+        <ul class="data-list">
+          <li>Discord User IDs</li>
+          <li>Discord Server IDs</li>
+          <li>Discord Channel IDs</li>
+          <li>Discord Rollen-IDs</li>
+          <li>Servereinstellungen</li>
+          <li>Bot-Konfigurationen</li>
+        </ul>
+      </div>
+    </div>
 
-## 7. Löschung von Daten
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 3</span>
+        <span class="section-title">Ticketsystem</span>
+      </div>
+      <div class="section-body">
+        <p>Bei Nutzung des Ticketsystems können Ticket-Inhalte innerhalb des jeweiligen Discord-Servers gespeichert werden. Dies dient ausschließlich der Bearbeitung und Dokumentation von Supportanfragen.</p>
+      </div>
+    </div>
 
-Nutzer haben jederzeit das Recht, die Löschung ihrer gespeicherten Daten zu verlangen.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 4</span>
+        <span class="section-title">Geburtstagsfunktion</span>
+      </div>
+      <div class="section-body">
+        <p>Nutzer können freiwillig ihr Geburtsdatum hinterlegen, um Geburtstagsbenachrichtigungen zu erhalten.</p>
+        <ul class="data-list">
+          <li>Discord User ID</li>
+          <li>Geburtsdatum</li>
+        </ul>
+        <div class="notice">Die Nutzung ist freiwillig und kann jederzeit beendet werden.</div>
+      </div>
+    </div>
 
-Eine Anfrage kann per E-Mail an [support@knirpslarsi.de](mailto:support@knirpslarsi.de) oder über das Support-System von Larsium V2 gestellt werden.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 5</span>
+        <span class="section-title">Autogrammkarten</span>
+      </div>
+      <div class="section-body">
+        <p>Nutzer können freiwillig ihre Postanschrift angeben, um eine Autogrammkarte zu erhalten. Die Anschrift wird ausschließlich an den Betreiber (knirpslarsi_yt) übermittelt und nur für den Versand verwendet.</p>
+        <div class="notice">Die Anschrift wird nach Bestätigung des Erhalts gelöscht. Sie ist nicht öffentlich einsehbar.</div>
+      </div>
+    </div>
 
-Nach Eingang einer berechtigten Anfrage werden die betreffenden Daten innerhalb einer angemessenen Frist gelöscht, sofern keine gesetzlichen oder technischen Gründe einer sofortigen Löschung entgegenstehen.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 6</span>
+        <span class="section-title">Weitergabe von Daten</span>
+      </div>
+      <div class="section-body">
+        <p>Personenbezogene Daten werden nicht verkauft oder an unbeteiligte Dritte weitergegeben.</p>
+      </div>
+    </div>
 
-Folgende Daten können auf Anfrage gelöscht werden:
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 7</span>
+        <span class="section-title">Löschung von Daten</span>
+      </div>
+      <div class="section-body">
+        <p>Nutzer haben jederzeit das Recht, die Löschung ihrer gespeicherten Daten zu verlangen – per E-Mail an <a href="mailto:support@knirpslarsi.de" style="color:var(--accent);text-decoration:none;">support@knirpslarsi.de</a> oder über das Support-System.</p>
+        <p>Folgende Daten können auf Anfrage gelöscht werden:</p>
+        <ul class="delete-list">
+          <li>Gespeicherte Discord User IDs</li>
+          <li>Geburtstagsdaten</li>
+          <li>Ticketbezogene Daten (soweit technisch möglich)</li>
+          <li>Sonstige nutzerbezogene Informationen</li>
+        </ul>
+        <div class="notice">Adressdaten für Autogrammkarten werden unabhängig von einer Anfrage nach Bestätigung des Erhalts automatisch gelöscht.</div>
+      </div>
+    </div>
 
-* Gespeicherte Discord User IDs
-* Geburtstagsdaten
-* Ticketbezogene Daten, soweit technisch möglich
-* Sonstige durch Larsium V2 gespeicherte nutzerbezogene Informationen
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 8</span>
+        <span class="section-title">Änderungen</span>
+      </div>
+      <div class="section-body">
+        <p>Diese Datenschutzerklärung kann bei Änderungen des Bots oder aufgrund rechtlicher Anforderungen aktualisiert werden.</p>
+      </div>
+    </div>
+  </div>
 
-Adressdaten, die für den Versand von Autogrammkarten übermittelt wurden, werden unabhängig von einer Löschanfrage nach Bestätigung des Erhalts der Autogrammkarte gelöscht.
+  <!-- ── ENGLISH ── -->
+  <div class="lang-section" id="en">
+    <div class="lang-label">
+      <span class="lang-badge">English</span>
+      <div class="lang-divider"></div>
+    </div>
 
-## 8. Änderungen
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 1</span>
+        <span class="section-title">Data Controller</span>
+      </div>
+      <div class="section-body">
+        <p>The person responsible for data processing related to the Discord bot "Larsium V2" is:</p>
+        <p><strong style="color:var(--text)">Operator:</strong> knirpslarsi_yt &nbsp;·&nbsp; <a href="mailto:support@knirpslarsi.de" style="color:var(--accent);text-decoration:none;">support@knirpslarsi.de</a></p>
+      </div>
+    </div>
 
-Diese Datenschutzerklärung kann bei Änderungen des Bots oder rechtlicher Anforderungen aktualisiert werden.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 2</span>
+        <span class="section-title">Data Collected</span>
+      </div>
+      <div class="section-body">
+        <p>Larsium V2 only processes data required to provide its functionality:</p>
+        <ul class="data-list">
+          <li>Discord User IDs</li>
+          <li>Discord Server IDs</li>
+          <li>Discord Channel IDs</li>
+          <li>Discord Role IDs</li>
+          <li>Server settings</li>
+          <li>Bot configurations</li>
+        </ul>
+      </div>
+    </div>
 
-# Privacy Policy (English)
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 3</span>
+        <span class="section-title">Ticket System</span>
+      </div>
+      <div class="section-body">
+        <p>When using the ticket system, ticket content may be stored within the respective Discord server for support and documentation purposes.</p>
+      </div>
+    </div>
 
-Last updated: June 2026
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 4</span>
+        <span class="section-title">Birthday Feature</span>
+      </div>
+      <div class="section-body">
+        <p>Users may voluntarily provide their date of birth to receive birthday announcements.</p>
+        <ul class="data-list">
+          <li>Discord User ID</li>
+          <li>Date of Birth</li>
+        </ul>
+        <div class="notice">Participation in this feature is entirely optional and can be ended at any time.</div>
+      </div>
+    </div>
 
-## 1. Data Controller
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 5</span>
+        <span class="section-title">Autograph Cards</span>
+      </div>
+      <div class="section-body">
+        <p>Users may voluntarily provide a postal address to receive an autograph card. The address is transmitted only to the bot operator (knirpslarsi_yt) and is used solely for shipping.</p>
+        <div class="notice">The address is deleted after delivery has been confirmed and is not publicly accessible.</div>
+      </div>
+    </div>
 
-The person responsible for data processing related to the Discord bot "Larsium V2" is:
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 6</span>
+        <span class="section-title">Data Sharing</span>
+      </div>
+      <div class="section-body">
+        <p>Personal data is not sold or shared with unrelated third parties.</p>
+      </div>
+    </div>
 
-Operator: knirpslarsi_yt
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 7</span>
+        <span class="section-title">Data Deletion</span>
+      </div>
+      <div class="section-body">
+        <p>Users have the right to request deletion of their stored data at any time via <a href="mailto:support@knirpslarsi.de" style="color:var(--accent);text-decoration:none;">support@knirpslarsi.de</a> or through the Larsium V2 support system.</p>
+        <p>The following data may be deleted upon request:</p>
+        <ul class="delete-list">
+          <li>Stored Discord User IDs</li>
+          <li>Birthday information</li>
+          <li>Ticket-related data (where technically possible)</li>
+          <li>Any other user-related information stored by Larsium V2</li>
+        </ul>
+        <div class="notice">Postal addresses for autograph card delivery are deleted automatically after delivery confirmation, regardless of whether a deletion request is submitted.</div>
+      </div>
+    </div>
 
-Contact: [support@knirpslarsi.de](mailto:support@knirpslarsi.de)
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 8</span>
+        <span class="section-title">Changes</span>
+      </div>
+      <div class="section-body">
+        <p>This Privacy Policy may be updated to reflect changes to the bot or legal requirements.</p>
+      </div>
+    </div>
+  </div>
 
-## 2. Data Collected
+</main>
 
-Larsium V2 only processes data required to provide its functionality, including:
+<footer>
+  <p>© 2026 knirpslarsi_yt &nbsp;·&nbsp; <a href="mailto:support@knirpslarsi.de">support@knirpslarsi.de</a></p>
+</footer>
 
-* Discord User IDs
-* Discord Server IDs
-* Discord Channel IDs
-* Discord Role IDs
-* Server settings and bot configurations
-
-## 3. Ticket System
-
-When using the ticket system, ticket content may be stored within the respective Discord server for support and documentation purposes.
-
-## 4. Birthday Feature
-
-Users may voluntarily provide their date of birth to receive birthday announcements.
-
-The following data may be stored:
-
-* Discord User ID
-* Date of Birth
-
-Participation in this feature is entirely optional.
-
-## 5. Autograph Cards
-
-Users may voluntarily provide a postal address to receive an autograph card.
-
-The address is transmitted only to the bot operator (knirpslarsi_yt) and is used solely for shipping the requested autograph card.
-
-After delivery has been confirmed, the address is deleted. The information is not publicly accessible and cannot be viewed through console outputs or other public systems.
-
-## 6. Data Sharing
-
-Personal data is not sold or shared with unrelated third parties.
-
-## 7. Data Deletion
-
-Users have the right to request deletion of their stored data at any time.
-
-Requests can be submitted via email to [support@knirpslarsi.de](mailto:support@knirpslarsi.de) or through the Larsium V2 support system.
-
-Upon receipt of a valid request, the relevant data will be deleted within a reasonable timeframe unless legal or technical requirements prevent immediate deletion.
-
-The following data may be deleted upon request:
-
-* Stored Discord User IDs
-* Birthday information
-* Ticket-related data where technically possible
-* Any other user-related information stored by Larsium V2
-
-Postal addresses submitted for autograph card delivery are deleted automatically after delivery has been confirmed, regardless of whether a deletion request is submitted.
-
-## 8. Changes
-
-This Privacy Policy may be updated to reflect changes to the bot or legal requirements.
+</body>
+</html>
