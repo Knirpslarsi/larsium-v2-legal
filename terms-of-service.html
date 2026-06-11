@@ -1,97 +1,448 @@
-# Nutzungsbedingungen (Deutsch)
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutzungsbedingungen – Larsium V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-Stand: Juni 2026
+    :root {
+      --bg:        #0e0f13;
+      --surface:   #16181f;
+      --card:      #1e2029;
+      --border:    #2a2d3a;
+      --accent:    #5865f2;
+      --accent-dim:#3b44b5;
+      --text:      #e2e5f0;
+      --muted:     #7c8098;
+      --tag:       #252836;
+    }
 
-## 1. Geltungsbereich
+    html { scroll-behavior: smooth; }
 
-Diese Nutzungsbedingungen gelten für die Nutzung des Discord-Bots „Larsium V2“.
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-Durch die Nutzung des Bots stimmen Nutzer diesen Bedingungen zu.
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+    }
+    .lang-switch {
+      display: flex;
+      gap: 6px;
+    }
+    .lang-switch a {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all .15s;
+    }
+    .lang-switch a:hover,
+    .lang-switch a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-## 2. Bereitstellung
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
 
-Larsium V2 wird kostenlos bereitgestellt.
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 48px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(88,101,242,.12);
+      border: 1px solid rgba(88,101,242,.3);
+      padding: 4px 10px;
+      border-radius: 99px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-meta {
+      font-size: 14px;
+      color: var(--muted);
+    }
 
-Es besteht kein Anspruch auf permanente Verfügbarkeit, bestimmte Funktionen oder zukünftige Updates.
+    /* ── Language sections ── */
+    .lang-section {
+      margin-bottom: 56px;
+    }
+    .lang-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .lang-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 5px;
+      background: var(--tag);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .lang-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
-## 3. Zulässige Nutzung
+    /* ── Section cards ── */
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 12px;
+      transition: border-color .15s;
+    }
+    .section-card:hover { border-color: #3a3f55; }
 
-Der Bot darf nur im Einklang mit den Discord-Richtlinien sowie geltendem Recht verwendet werden.
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .section-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(88,101,242,.12);
+      border: 1px solid rgba(88,101,242,.25);
+      border-radius: 6px;
+      padding: 3px 8px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
 
-Missbrauch, Manipulationsversuche oder rechtswidrige Nutzung sind untersagt.
+    .section-body p {
+      font-size: 14.5px;
+      color: #a8adc4;
+      margin-bottom: 8px;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
 
-## 4. Ticketsystem
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
 
-Nutzer sind für die Inhalte verantwortlich, die sie über das Ticketsystem einreichen.
+    @media (max-width: 480px) {
+      .section-card { padding: 18px; }
+      .header-inner { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
 
-Rechtswidrige, beleidigende oder schädliche Inhalte sind nicht gestattet.
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">L</div>
+      <span class="logo-name">Larsium V2</span>
+    </a>
+    <div class="lang-switch">
+      <a href="#de" class="active">DE</a>
+      <a href="#en">EN</a>
+    </div>
+  </div>
+</header>
 
-## 5. Autogrammkarten
+<main>
 
-Die Angabe einer Anschrift für den Versand einer Autogrammkarte erfolgt freiwillig.
+  <div class="hero">
+    <div class="hero-tag">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="5" fill="currentColor" opacity=".5"/><circle cx="5" cy="5" r="2.5" fill="currentColor"/></svg>
+      Discord Bot
+    </div>
+    <h1>Nutzungsbedingungen</h1>
+    <p class="hero-meta">Stand: Juni 2026 &nbsp;·&nbsp; Larsium V2</p>
+  </div>
 
-Der Betreiber übernimmt keine Garantie für die Zustellung oder Verfügbarkeit von Autogrammkarten.
+  <!-- ── DEUTSCH ── -->
+  <div class="lang-section" id="de">
+    <div class="lang-label">
+      <span class="lang-badge">Deutsch</span>
+      <div class="lang-divider"></div>
+    </div>
 
-## 6. Haftung
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 1</span>
+        <span class="section-title">Geltungsbereich</span>
+      </div>
+      <div class="section-body">
+        <p>Diese Nutzungsbedingungen gelten für die Nutzung des Discord-Bots „Larsium V2".</p>
+        <p>Durch die Nutzung des Bots stimmen Nutzer diesen Bedingungen zu.</p>
+      </div>
+    </div>
 
-Der Bot wird „wie besehen“ bereitgestellt.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 2</span>
+        <span class="section-title">Bereitstellung</span>
+      </div>
+      <div class="section-body">
+        <p>Larsium V2 wird kostenlos bereitgestellt.</p>
+        <p>Es besteht kein Anspruch auf permanente Verfügbarkeit, bestimmte Funktionen oder zukünftige Updates.</p>
+      </div>
+    </div>
 
-Soweit gesetzlich zulässig, übernimmt der Betreiber keine Haftung für Ausfälle, Datenverluste oder Schäden, die durch die Nutzung des Bots entstehen.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 3</span>
+        <span class="section-title">Zulässige Nutzung</span>
+      </div>
+      <div class="section-body">
+        <p>Der Bot darf nur im Einklang mit den Discord-Richtlinien sowie geltendem Recht verwendet werden.</p>
+        <p>Missbrauch, Manipulationsversuche oder rechtswidrige Nutzung sind untersagt.</p>
+      </div>
+    </div>
 
-## 7. Änderungen und Einstellung
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 4</span>
+        <span class="section-title">Ticketsystem</span>
+      </div>
+      <div class="section-body">
+        <p>Nutzer sind für die Inhalte verantwortlich, die sie über das Ticketsystem einreichen.</p>
+        <p>Rechtswidrige, beleidigende oder schädliche Inhalte sind nicht gestattet.</p>
+      </div>
+    </div>
 
-Der Betreiber kann Funktionen ändern, einschränken oder den Betrieb des Bots jederzeit einstellen.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 5</span>
+        <span class="section-title">Autogrammkarten</span>
+      </div>
+      <div class="section-body">
+        <p>Die Angabe einer Anschrift für den Versand einer Autogrammkarte erfolgt freiwillig.</p>
+        <p>Der Betreiber übernimmt keine Garantie für die Zustellung oder Verfügbarkeit von Autogrammkarten.</p>
+      </div>
+    </div>
 
-## 8. Kontakt
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 6</span>
+        <span class="section-title">Haftung</span>
+      </div>
+      <div class="section-body">
+        <p>Der Bot wird „wie besehen" bereitgestellt.</p>
+        <p>Soweit gesetzlich zulässig, übernimmt der Betreiber keine Haftung für Ausfälle, Datenverluste oder Schäden, die durch die Nutzung des Bots entstehen.</p>
+      </div>
+    </div>
 
-Bei Fragen kann der Betreiber unter [support@knirpslarsi.de](mailto:support@knirpslarsi.de) kontaktiert werden.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 7</span>
+        <span class="section-title">Änderungen und Einstellung</span>
+      </div>
+      <div class="section-body">
+        <p>Der Betreiber kann Funktionen ändern, einschränken oder den Betrieb des Bots jederzeit einstellen.</p>
+      </div>
+    </div>
 
-# Terms of Service (English)
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 8</span>
+        <span class="section-title">Kontakt</span>
+      </div>
+      <div class="section-body">
+        <p>Bei Fragen kann der Betreiber unter <a href="mailto:support@knirpslarsi.de" style="color:var(--accent);text-decoration:none;">support@knirpslarsi.de</a> kontaktiert werden.</p>
+      </div>
+    </div>
+  </div>
 
-Last updated: June 2026
+  <!-- ── ENGLISH ── -->
+  <div class="lang-section" id="en">
+    <div class="lang-label">
+      <span class="lang-badge">English</span>
+      <div class="lang-divider"></div>
+    </div>
 
-## 1. Scope
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 1</span>
+        <span class="section-title">Scope</span>
+      </div>
+      <div class="section-body">
+        <p>These Terms of Service apply to the use of the Discord bot "Larsium V2".</p>
+        <p>By using the bot, users agree to these terms.</p>
+      </div>
+    </div>
 
-These Terms of Service apply to the use of the Discord bot "Larsium V2".
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 2</span>
+        <span class="section-title">Service Availability</span>
+      </div>
+      <div class="section-body">
+        <p>Larsium V2 is provided free of charge.</p>
+        <p>No guarantee is made regarding continuous availability, specific features, or future updates.</p>
+      </div>
+    </div>
 
-By using the bot, users agree to these terms.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 3</span>
+        <span class="section-title">Acceptable Use</span>
+      </div>
+      <div class="section-body">
+        <p>The bot must be used in compliance with Discord's policies and all applicable laws.</p>
+        <p>Abuse, unauthorized manipulation, or unlawful use of the bot is prohibited.</p>
+      </div>
+    </div>
 
-## 2. Service Availability
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 4</span>
+        <span class="section-title">Ticket System</span>
+      </div>
+      <div class="section-body">
+        <p>Users are responsible for the content they submit through the ticket system.</p>
+        <p>Illegal, abusive, or harmful content is not permitted.</p>
+      </div>
+    </div>
 
-Larsium V2 is provided free of charge.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 5</span>
+        <span class="section-title">Autograph Cards</span>
+      </div>
+      <div class="section-body">
+        <p>Providing a postal address for autograph card delivery is voluntary.</p>
+        <p>The operator does not guarantee the availability or successful delivery of autograph cards.</p>
+      </div>
+    </div>
 
-No guarantee is made regarding continuous availability, specific features, or future updates.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 6</span>
+        <span class="section-title">Limitation of Liability</span>
+      </div>
+      <div class="section-body">
+        <p>The bot is provided "as is".</p>
+        <p>To the extent permitted by law, the operator shall not be liable for service interruptions, data loss, or damages arising from use of the bot.</p>
+      </div>
+    </div>
 
-## 3. Acceptable Use
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 7</span>
+        <span class="section-title">Changes and Termination</span>
+      </div>
+      <div class="section-body">
+        <p>The operator may modify, restrict, or discontinue the bot at any time.</p>
+      </div>
+    </div>
 
-The bot must be used in compliance with Discord's policies and all applicable laws.
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-num">§ 8</span>
+        <span class="section-title">Contact</span>
+      </div>
+      <div class="section-body">
+        <p>For questions, contact: <a href="mailto:support@knirpslarsi.de" style="color:var(--accent);text-decoration:none;">support@knirpslarsi.de</a></p>
+      </div>
+    </div>
+  </div>
 
-Abuse, unauthorized manipulation, or unlawful use of the bot is prohibited.
+</main>
 
-## 4. Ticket System
+<footer>
+  <p>© 2026 knirpslarsi_yt &nbsp;·&nbsp; <a href="mailto:support@knirpslarsi.de">support@knirpslarsi.de</a></p>
+</footer>
 
-Users are responsible for the content they submit through the ticket system.
-
-Illegal, abusive, or harmful content is not permitted.
-
-## 5. Autograph Cards
-
-Providing a postal address for autograph card delivery is voluntary.
-
-The operator does not guarantee the availability or successful delivery of autograph cards.
-
-## 6. Limitation of Liability
-
-The bot is provided "as is".
-
-To the extent permitted by law, the operator shall not be liable for service interruptions, data loss, or damages arising from use of the bot.
-
-## 7. Changes and Termination
-
-The operator may modify, restrict, or discontinue the bot at any time.
-
-## 8. Contact
-
-For questions regarding these Terms of Service, contact:
-
-[support@knirpslarsi.de](mailto:support@knirpslarsi.de)
+</body>
+</html>
