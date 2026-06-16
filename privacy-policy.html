@@ -41,7 +41,7 @@
       overflow-x: hidden;
     }
 
-    /* Animated Background */
+    /* Smooth Animated Background */
     body::before {
       content: '';
       position: fixed;
@@ -53,7 +53,7 @@
         radial-gradient(circle 800px at 20% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
         radial-gradient(circle 600px at 80% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
       pointer-events: none;
-      animation: backgroundShift 15s ease-in-out infinite;
+      animation: backgroundShift 30s ease-in-out infinite;
       z-index: 0;
     }
 
@@ -464,8 +464,8 @@
       <span class="logo-name">Larsium V2</span>
     </a>
     <div class="lang-switch">
-      <a href="#de" class="active">DE</a>
-      <a href="#en">EN</a>
+      <a href="#de" class="lang-btn active" data-lang="de">DE</a>
+      <a href="#en" class="lang-btn" data-lang="en">EN</a>
     </div>
   </div>
 </header>
@@ -708,6 +708,33 @@
 <footer>
   <p>© 2026 knirpslarsi_yt &nbsp;·&nbsp; <a href="mailto:support@knirpslarsi.de">support@knirpslarsi.de</a></p>
 </footer>
+
+<script>
+  // Smooth language switching
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Get target language section
+      const lang = this.dataset.lang;
+      const section = document.getElementById(lang);
+      
+      if (section) {
+        // Scroll to section with 10px offset from top
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const targetPosition = section.offsetTop - headerHeight - 10;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
